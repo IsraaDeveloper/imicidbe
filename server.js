@@ -11,7 +11,11 @@ admin.initializeApp({
 
 const db = admin.firestore();
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: "*", // Bisa diganti dengan origin spesifik, misalnya: "https://israa.my.id"
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"]
+}));
 app.use(bodyParser.json());
 
 // **Generate random slug jika tidak diberikan custom slug**
