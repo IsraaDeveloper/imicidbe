@@ -4,9 +4,15 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 // Inisialisasi Firebase
-const serviceAccount = require("./serviceAccountKey.json"); // Download dari Firebase Console
+const serviceAccount = {
+  type: "service_account",
+  project_id: process.env.project_id,
+  private_key: process.env.private_key.replace(/\\n/g, '\n'),
+  client_email: process.env.client_email,
+};
+
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert(serviceAccount),
 });
 
 const db = admin.firestore();
