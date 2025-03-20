@@ -12,10 +12,19 @@ admin.initializeApp({
 const db = admin.firestore();
 const app = express();
 app.use(cors({
-    origin: "*", // Bisa diganti dengan origin spesifik, misalnya: "https://israa.my.id"
+    origin: "https://imicid.netlify.app", // Ganti dengan domain frontend kamu
     methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"]
+    allowedHeaders: ["Content-Type"],
+    credentials: true
 }));
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "https://imicid.netlify.app");
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    next();
+});
+
 app.use(bodyParser.json());
 
 // **Generate random slug jika tidak diberikan custom slug**
