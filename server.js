@@ -36,7 +36,7 @@ app.post("/shorten", async (req, res) => {
         created_at: admin.firestore.Timestamp.now(),
     });
 
-    res.json({ short_url: `http://localhost:3000/${slug}` });
+    res.json({ short_url: `https://imicidbe.vercel.app/${slug}` });
 });
 
 // **Redirect short link ke URL asli**
