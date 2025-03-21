@@ -61,7 +61,7 @@ app.post("/shorten", async (req, res) => {
         created_at: admin.firestore.Timestamp.now(),
     });
 
-    res.json({ short_url: `https://imicidbe.my.id/${slug}` });
+    res.json({ short_url: `https://imicid.my.id/${slug}` });
 });
 
 // **Redirect short link ke URL asli**
